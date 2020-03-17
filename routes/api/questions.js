@@ -41,7 +41,8 @@ router.delete('/:id', (req, res) => {
 // @access  Public
 router.get('/:id/answers', (req, res) => {
     Question.findById(req.params.id)
-        .then(question => res.json({ answers: question.answers }));
+        .then(question => res.json({ answers: question.answers }))
+        .catch(err => res.status(404).json({ success: false }));
 });
 
 // @route   POST api/questions/:id/answers
@@ -55,7 +56,8 @@ router.post('/:id/answers', (req, res) => {
             question.answers.push(newAnswer);
             question.save()
                 .then(res.json(question));
-        });
+        })
+        .catch(err => res.status(404).json({ success: false }));
 });
 
 module.exports = router;
