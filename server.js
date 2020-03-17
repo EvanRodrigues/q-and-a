@@ -4,6 +4,11 @@ const express = require('express'),
     app = express(),
     port = process.env.PORT || 5000;
 
+const questions = require('./routes/api/questions');
+
+//Body parser middleware
+app.use(express.json());
+
 //MongoDB Config
 const db = process.env.MONGO_URI || require('./config/ConnectionVars').mongoURI;
 
@@ -26,7 +31,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 //Get api routes.
-//app.use('/api/question', require('./routes/api/question'));
-//app.use('/api/answer', require('./routes/api/answer'));
+app.use('/api/questions', questions);
 
 app.listen(port);
