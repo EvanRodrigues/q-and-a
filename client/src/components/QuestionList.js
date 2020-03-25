@@ -12,7 +12,6 @@ export const QuestionList = () => {
             .then(data => { setQuestions(data); });
     });
 
-
     if (questions === null) {
         return (<h1>Loading...</h1>);
     }
@@ -20,7 +19,9 @@ export const QuestionList = () => {
         <Container>
             <h1>Questions</h1>
 
-            <Question />
+            {questions.map(question =>
+                <Question key={question._id} id={question._id} question={question.question} answers={question.answers.length} />
+            )}
         </Container>
     );
 }

@@ -5,10 +5,17 @@
 .questionContainer {
     display: flex;
     justify-content: space-between;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px grey solid;
 }
 
 .answerButton:hover {
     cursor: default;
     background-color: #007bff;
     border-color: #007bff;
+}
+
+.formError {
+    color: red;
 }
