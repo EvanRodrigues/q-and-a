@@ -6,10 +6,14 @@ import { Question } from './Question';
 export const QuestionList = () => {
     let { questions, setQuestions } = useContext(GlobalContext);
 
-    useEffect(() => {
+    const getQuestions = async () => {
         fetch('http://localhost:5000/api/questions')
             .then(response => { return response.json() })
             .then(data => { setQuestions(data); });
+    }
+
+    useEffect(() => {
+        getQuestions();
     }, []);
 
     if (questions === null) {

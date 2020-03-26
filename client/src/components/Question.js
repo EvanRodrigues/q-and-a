@@ -1,11 +1,14 @@
 import React from 'react';
 import { Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 export const Question = (props) => {
     return (
         <div className="questionContainer">
-            <a href={`http://localhost:3000/question/?id=${props.id}`}><h3>{props.question}</h3></a>
+            <Link to={`/question/${props.id}`}>
+                <h3>{props.question}</h3>
+            </Link>
             <Button className="answerButton" color="primary">{props.answers} answers</Button>
-        </div>
+        </div >
     );
 }
