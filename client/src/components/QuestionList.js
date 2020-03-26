@@ -10,7 +10,7 @@ export const QuestionList = () => {
         fetch('http://localhost:5000/api/questions')
             .then(response => { return response.json() })
             .then(data => { setQuestions(data); });
-    });
+    }, []);
 
     if (questions === null) {
         return (<h1>Loading...</h1>);

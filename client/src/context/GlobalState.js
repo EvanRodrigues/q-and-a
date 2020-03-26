@@ -4,11 +4,6 @@ import QuestionReducer from './QuestionReducer';
 
 //Initial state
 const initialState = {
-    question: "",
-    errors: {
-        questionError: "",
-        answerError: ""
-    },
     questions: null
 };
 
@@ -27,30 +22,15 @@ export const GlobalProvider = ({ children }) => {
         });
     }
 
-    function updateQuestion(data) {
+    function addQuestion(data) {
         dispatch({
-            type: 'UPDATE_QUESTION',
+            type: 'ADD_QUESTION',
             payload: data
         })
     }
 
-    function throwQuestionError(data) {
-        dispatch({
-            type: 'THROW_QUESTION_ERROR',
-            payload: data
-        });
-    }
-
-    function resetErrors() {
-        dispatch({
-            type: 'RESET_ERRORS',
-        });
-    }
-
-
-
     return (
-        <GlobalContext.Provider value={{ question: state.question, questions: state.questions, errors: state.errors, setQuestions, updateQuestion, throwQuestionError, resetErrors }}>
+        <GlobalContext.Provider value={{ ...state, addQuestion, setQuestions }}>
             {children}
         </GlobalContext.Provider>
     )
