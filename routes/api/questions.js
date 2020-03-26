@@ -41,7 +41,7 @@ router.delete('/:id', (req, res) => {
 // @access  Public
 router.get('/:id/answers', (req, res) => {
     Question.findById(req.params.id)
-        .then(question => res.json({ answers: question.answers }))
+        .then(question => res.json({ question: question.question, answers: question.answers }))
         .catch(err => res.status(404).json({ success: false }));
 });
 

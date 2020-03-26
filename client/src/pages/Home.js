@@ -4,7 +4,7 @@ import { QuestionList } from '../components/QuestionList';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AskQuestion } from '../components/AskQuestion';
 
-function Home() {
+export const Home = () => {
     return (
         <Container>
             <h1>Q & A</h1>
@@ -17,5 +17,3 @@ function Home() {
         </Container>
     );
 }
-
-export default Home;
