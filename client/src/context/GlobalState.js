@@ -4,7 +4,8 @@ import QuestionReducer from './QuestionReducer';
 
 //Initial state
 const initialState = {
-    questions: null
+    questions: null,
+    answers: []
 };
 
 //Create context
@@ -15,9 +16,9 @@ export const GlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(QuestionReducer, initialState);
 
     //Actions
-    function setQuestions(data) {
+    function initQuestions(data) {
         dispatch({
-            type: 'SET_QUESTIONS',
+            type: 'INIT_QUESTIONS',
             payload: data
         });
     }
@@ -29,8 +30,22 @@ export const GlobalProvider = ({ children }) => {
         })
     }
 
+    function initAnswers(data) {
+        dispatch({
+            type: 'INIT_ANSWERS',
+            payload: data
+        })
+    }
+
+    function addAnswer(data) {
+        dispatch({
+            type: 'ADD_ANSWER',
+            payload: data
+        })
+    }
+
     return (
-        <GlobalContext.Provider value={{ ...state, addQuestion, setQuestions }}>
+        <GlobalContext.Provider value={{ ...state, addQuestion, initQuestions, addAnswer, initAnswers }}>
             {children}
         </GlobalContext.Provider>
     )

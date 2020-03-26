@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { GlobalContext } from '../context/GlobalState';
 import { Container } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const AnswerList = (props) => {
-    const [answers, setAnswers] = useState([]);
+    const { answers, initAnswers } = useContext(GlobalContext);
     const [question, setQuestion] = useState("");
 
     useEffect(() => {
@@ -14,7 +15,7 @@ export const AnswerList = (props) => {
         fetch(`http://localhost:5000/api/questions/${props.id}/answers`)
             .then(response => { return response.json() })
             .then(json => {
-                setAnswers(json.answers);
+                initAnswers(json.answers);
                 setQuestion(json.question);
             });
     }
