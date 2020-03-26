@@ -14,7 +14,7 @@ export const QuestionPage = ({ match }) => {
 
             <hr></hr>
             <AnswerList id={match.params.id} />
-            <AnswerQuestion />
+            <AnswerQuestion id={match.params.id} />
         </Container>
     );
 }

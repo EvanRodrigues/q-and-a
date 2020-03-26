@@ -4,12 +4,12 @@ import { Container } from 'reactstrap';
 import { Question } from './Question';
 
 export const QuestionList = () => {
-    let { questions, setQuestions } = useContext(GlobalContext);
+    let { questions, initQuestions } = useContext(GlobalContext);
 
     const getQuestions = async () => {
         fetch('http://localhost:5000/api/questions')
             .then(response => { return response.json() })
-            .then(data => { setQuestions(data); });
+            .then(data => { initQuestions(data); });
     }
 
     useEffect(() => {
